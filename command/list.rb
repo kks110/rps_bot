@@ -1,0 +1,3 @@
+module Command
+  LIST = []
+end
