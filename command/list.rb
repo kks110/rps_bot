@@ -1,3 +1,7 @@
+require_relative './register'
+
 module Command
-  LIST = []
+  LIST = [
+    Register.new
+  ]
 end

@@ -5,8 +5,10 @@ require 'discordrb'
 require 'pry'
 require_relative './init'
 Dir["./models/*.rb"].each {|file| require file }
+
 require_relative './command/list'
 require_relative './command/register_commands'
+require_relative './command/request'
 
 
 puts 'Registering weapon types...'
@@ -22,7 +24,7 @@ Command::LIST.each do |command|
     puts "#{event.user.username} executed command: #{command.name}"
 
     request = Command::Request.new(event: event)
-    command.execute(request:request)
+    command.execute(request: request)
   end
 end
 
