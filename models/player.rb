@@ -2,8 +2,6 @@
 
 class Player
   include Mongoid::Document
-  # I decided to go with an integer rather than a float and have values as pence rather than pounds
-  # This it to help avoid any weird rounding errors with floats.
   field :discord_id, type: BigDecimal, default: 0
 
   field :username, type: String

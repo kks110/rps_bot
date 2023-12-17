@@ -9,6 +9,7 @@ Dir["./models/*.rb"].each {|file| require file }
 require_relative './command/list'
 require_relative './command/register_commands'
 require_relative './command/request'
+require_relative './command/options'
 
 
 puts 'Registering weapon types...'
