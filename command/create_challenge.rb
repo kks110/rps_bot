@@ -13,9 +13,27 @@ module Command
     def execute(request:)
       event = request.event
 
+      challenger_id = event.user.id
+      challenged_id = event.options['user'].to_i
+
       weapon = WeaponType.find_by({ name: event.options['weapon'] })
-      challenger = Player.find_by({ discord_id: event.user.id })
-      challenged = Player.find_by({ discord_id: event.options['user'] })
+      challenger = Player.find_by({ discord_id: challenger_id })
+      challenged = Player.find_by({ discord_id: challenged_id })
+
+      if challenger.nil?
+        event.respond(content: "You have not registered so you can't challenge someone", ephemeral: true)
+        return
+      end
+
+      if challenged.nil?
+        event.respond(content: "<@#{challenged_id}> has not registered to play", ephemeral: true)
+        return
+      end
+
+      if challenger_id == challenged_id
+        event.respond(content: "You can't challenge yourself", ephemeral: true)
+        return
+      end
 
       Challenge.create!(
         challenger: challenger,
