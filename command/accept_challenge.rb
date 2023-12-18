@@ -33,7 +33,7 @@ module Command
 
       challenger_weapon = challenge.weapon
 
-      winner = Helpers::GameResultUpdater.new(
+      winner = Helpers::GameResultsUpdater.new(
         challenger: challenger,
         challenged: challenged,
         challenger_weapon: challenger_weapon,

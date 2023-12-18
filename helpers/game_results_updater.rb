@@ -1,7 +1,7 @@
 require_relative 'game_logic'
 
 module Helpers
-  class GameResultUpdater
+  class GameResultsUpdater
     attr_reader :challenger, :challenged, :challenger_weapon, :challenged_weapon, :winner
 
     def initialize(challenger:, challenged:, challenger_weapon:, challenged_weapon:)
