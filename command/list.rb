@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'register'
+require_relative 'rps_register'
 require_relative 'create_challenge'
+require_relative 'accept_challenge'
 
 module Command
   LIST = [
-    Register.new,
-    CreateChallenge.new
+    RPSRegister.new,
+    CreateChallenge.new,
+    AcceptChallenge.new
   ].freeze
 end

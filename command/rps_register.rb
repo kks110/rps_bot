@@ -3,13 +3,13 @@
 require_relative 'base'
 
 module Command
-  class Register < Command::Base
+  class RPSRegister < Command::Base
     def name
-      :register
+      :rps_register
     end
 
     def description
-      'Register to play!'
+      'Register as a Rock Paper Scissors player!'
     end
 
     def execute(request:)
