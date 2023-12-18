@@ -14,13 +14,13 @@ module Command
 
     def execute(request:)
       event = request.event
+      user = event.user
 
-      if Player.find_by({ discord_id: event.user.id })
+      if Player.find_by({ discord_id: user.id })
         event.respond(content: 'You have already registered!', ephemeral: true)
         return
       end
 
-      user = event.user
       Player.create!(
         discord_id: user.id,
         username: user.username
