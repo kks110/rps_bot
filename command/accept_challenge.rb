@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'base'
+require_relative '../helpers/game_results_updater'
 
 module Command
   class AcceptChallenge < Command::Base
@@ -24,7 +25,6 @@ module Command
 
       challenge =  Challenge.find_by({ challenger: challenger, challenged: challenged}) ||
         Challenge.find_by({ challenger: challenged, challenged: challenger})
-        event.respond(content: "A challenge already exists!", ephemeral: true)
 
       if challenge.nil?
         event.respond(content: "No challenge between you exists", ephemeral: true)
@@ -47,6 +47,8 @@ module Command
       elsif winner == :challenged
         event.respond(content: "You picked #{challenged_weapon.name}, <@#{challenger.discord_id}> picked #{challenger_weapon.name} You have won!")
       end
+
+      challenge.destroy
     end
 
     def options
