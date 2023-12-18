@@ -5,7 +5,7 @@ require_relative 'base'
 module Command
   class CreateChallenge < Command::Base
     def name
-      :challenge
+      :create_challenge
     end
 
     def description
@@ -37,6 +37,12 @@ module Command
         return
       end
 
+      if Challenge.find_by({ challenger: challenger, challenged: challenged}) ||
+        Challenge.find_by({ challenger: challenged, challenged: challenger})
+        event.respond(content: "A challenge already exists!", ephemeral: true)
+        return
+      end
+
       Challenge.create!(
         challenger: challenger,
         challenged: challenged,
@@ -51,7 +57,7 @@ module Command
         Command::Options.new(
           type: 'user',
           name: 'user',
-          description: 'The user you want the stats of (Default is yourself)',
+          description: 'The user you want to challenge',
           required: true
         ),
         Command::Options.new(
