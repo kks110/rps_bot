@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Command
   class Options
     def initialize(type:, name:, description:, required: false, choices: {})

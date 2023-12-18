@@ -1,4 +1,6 @@
-require_relative './list'
+# frozen_string_literal: true
+
+require_relative 'list'
 
 module Command
   class RegisterCommands

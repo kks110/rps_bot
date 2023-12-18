@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './base'
 
 module Command
@@ -7,24 +9,24 @@ module Command
     end
 
     def description
-      "Register to play!"
+      'Register to play!'
     end
 
     def execute(request:)
       event = request.event
 
       if Player.find_by({ discord_id: event.user.id })
-        event.respond(content: "You have already registered!", ephemeral: true)
+        event.respond(content: 'You have already registered!', ephemeral: true)
         return
       end
 
       user = event.user
       Player.create!(
         discord_id: user.id,
-        username: user.username,
+        username: user.username
       )
 
-      event.respond(content: "You registered successfully!", ephemeral: true)
+      event.respond(content: 'You registered successfully!', ephemeral: true)
     end
   end
 end

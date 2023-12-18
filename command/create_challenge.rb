@@ -1,4 +1,6 @@
-require_relative './base'
+# frozen_string_literal: true
+
+require_relative 'base'
 
 module Command
   class CreateChallenge < Command::Base
@@ -7,7 +9,7 @@ module Command
     end
 
     def description
-      "Challenge someone!"
+      'Challenge someone!'
     end
 
     def execute(request:)
@@ -41,7 +43,7 @@ module Command
         weapon: weapon
       )
 
-      event.respond(content: "Challenge created!", ephemeral: true)
+      event.respond(content: 'Challenge created!', ephemeral: true)
     end
 
     def options
@@ -50,7 +52,7 @@ module Command
           type: 'user',
           name: 'user',
           description: 'The user you want the stats of (Default is yourself)',
-          required: true,
+          required: true
         ),
         Command::Options.new(
           type: 'string',
@@ -60,7 +62,7 @@ module Command
           choices: {
             rock: 'rock',
             paper: 'paper',
-            scissors: 'scissors',
+            scissors: 'scissors'
           }
         )
       ]
