@@ -2,7 +2,7 @@ require_relative 'game_logic'
 
 module Helpers
   class GameResultsUpdater
-    attr_reader :challenger, :challenged, :challenger_weapon, :challenged_weapon, :winner
+    attr_reader :challenger, :challenged, :challenger_weapon, :challenged_weapon, :winner, :global_stats
 
     def initialize(challenger:, challenged:, challenger_weapon:, challenged_weapon:)
       @challenger = challenger
@@ -10,6 +10,7 @@ module Helpers
       @challenger_weapon = challenger_weapon
       @challenged_weapon = challenged_weapon
       @winner = determine_winner
+      @global_stats = GlobalStats.first
     end
 
     def update_results
@@ -44,6 +45,7 @@ module Helpers
 
     def update_counts(participant, key)
       participant.update({ key.to_sym => participant.send(key) + 1 })
+      global_stats.update({ key.to_sym => global_stats.send(key) + 1 })
     end
   end
 end

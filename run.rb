@@ -10,10 +10,8 @@ require_relative 'command/register_commands'
 require_relative 'command/request'
 require_relative 'command/options'
 
-
-puts 'Registering weapon types...'
 WeaponTypesInitializer.initialize_weapon_types
-puts 'Done!'
+GlobalStatsInitializer.initialize_global_stats
 
 
 bot = Discordrb::Bot.new(token: ENV.fetch('SLASH_COMMAND_BOT_TOKEN', nil), intents: [:server_messages])
