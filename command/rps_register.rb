@@ -26,7 +26,7 @@ module Command
         username: user.username
       )
 
-      event.respond(content: 'You registered successfully!', ephemeral: true)
+      event.respond(content: 'You registered successfully!')
     end
   end
 end

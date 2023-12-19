@@ -8,7 +8,7 @@ module Command
     end
 
     def description
-      "See a players all time stats, default is yourself is no username given"
+      "See a players all time stats, default is yourself if no username given"
     end
 
     def execute(request:)
