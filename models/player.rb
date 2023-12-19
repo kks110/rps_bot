@@ -19,19 +19,19 @@ class Player
   validates :discord_id, :username, presence: true
 
   def rock_win_rate
-    return 0 if total_rock_games == 0
+    return 0 if total_rock_games.zero?
 
     (((rock_wins + draw_wr_adjustment(rock_draws)) / total_rock_games) * 100).round
   end
 
   def paper_win_rate
-    return 0 if total_paper_games == 0
+    return 0 if total_paper_games.zero?
 
     (((paper_wins + draw_wr_adjustment(paper_draws)) / total_paper_games) * 100).round
   end
 
   def scissors_win_rate
-    return 0 if total_scissors_games == 0
+    return 0 if total_scissors_games.zero?
 
     (((scissors_wins + draw_wr_adjustment(scissors_draws)) / total_scissors_games) * 100).round
   end

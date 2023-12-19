@@ -13,7 +13,7 @@ module Command
     def execute(request:)
       event = request.event
       user = event.user
-      player = Player.find_by({discord_id: user.id})
+      player = Player.find_by({ discord_id: user.id })
 
       people_you_have_challenged = Challenge.where({ challenger: player })
       people_who_have_challenged_you = Challenge.where({ challenged: player })

@@ -23,11 +23,11 @@ module Command
       challenger = Player.find_by({ discord_id: challenger_id })
       challenged = Player.find_by({ discord_id: challenged_id })
 
-      challenge =  Challenge.find_by({ challenger: challenger, challenged: challenged}) ||
-        Challenge.find_by({ challenger: challenged, challenged: challenger})
+      challenge =  Challenge.find_by({ challenger: challenger, challenged: challenged }) ||
+        Challenge.find_by({ challenger: challenged, challenged: challenger })
 
       if challenge.nil?
-        event.respond(content: "No challenge between you exists", ephemeral: true)
+        event.respond(content: 'No challenge between you exists', ephemeral: true)
         return
       end
 
@@ -40,11 +40,12 @@ module Command
         challenged_weapon: challenged_weapon
       ).update_results
 
-      if winner == :draw
+      case winner
+      when :draw
         event.respond(content: "<@#{challenger_id}> and <@#{challenged_id}> both picked #{challenged_weapon.name}. Its a draw!")
-      elsif winner == :challenger
+      when :challenger
         event.respond(content: "<@#{challenged_id}> picked #{challenged_weapon.name}, <@#{challenger_id}> picked #{challenger_weapon.name}. <@#{challenger_id}> has won!")
-      elsif winner == :challenged
+      when :challenged
         event.respond(content: "<@#{challenged_id}> picked #{challenged_weapon.name}, <@#{challenger_id}> picked #{challenger_weapon.name}. <@#{challenged_id}> has won!")
       end
 

@@ -5,11 +5,11 @@ class GlobalStatsInitializer
     def initialize_global_stats
       puts 'Creating global stats...'
 
-      if GlobalStats.count == 0
+      if GlobalStats.count.zero?
         GlobalStats.create!
-        puts "Done!"
+        puts 'Done!'
       else
-        puts "Already created, skipping..."
+        puts 'Already created, skipping...'
       end
     end
   end

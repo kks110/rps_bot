@@ -37,9 +37,9 @@ module Command
         return
       end
 
-      if Challenge.find_by({ challenger: challenger, challenged: challenged}) ||
-        Challenge.find_by({ challenger: challenged, challenged: challenger})
-        event.respond(content: "A challenge already exists!", ephemeral: true)
+      if Challenge.find_by({ challenger: challenger, challenged: challenged }) ||
+        Challenge.find_by({ challenger: challenged, challenged: challenger })
+        event.respond(content: 'A challenge already exists!', ephemeral: true)
         return
       end
 

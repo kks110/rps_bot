@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'base'
 require_relative '../helpers/stats_response_builder'
 
@@ -8,7 +10,7 @@ module Command
     end
 
     def description
-      "See all time stats"
+      'See all time stats'
     end
 
     def execute(request:)

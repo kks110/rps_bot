@@ -8,7 +8,7 @@ module Command
     end
 
     def description
-      "Show a list of commands"
+      'Show a list of commands'
     end
 
     def execute(request:)

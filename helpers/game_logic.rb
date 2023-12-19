@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 module Helpers
   class GameLogic
@@ -5,6 +6,7 @@ module Helpers
       result_for_challenger = pairings[challenger_weapon.name.to_sym][challenged_weapon.name.to_sym]
 
       return :draw if result_for_challenger == :draw
+
       result_for_challenger == :win ? :challenger : :challenged
     end
 

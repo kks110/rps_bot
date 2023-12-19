@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'game_logic'
 
 module Helpers
@@ -29,18 +31,18 @@ module Helpers
     end
 
     def update_draws
-      update_counts(challenger,"#{challenger_weapon.name}_draws")
-      update_counts(challenged, "#{challenged_weapon.name}_draws")
+      update_counts(challenger, "#{challenger_weapon.name}_draws")
+      update_counts(challenged,  "#{challenged_weapon.name}_draws")
     end
 
     def update_challenger_wins
-      update_counts(challenger,"#{challenger_weapon.name}_wins")
-      update_counts(challenged, "#{challenged_weapon.name}_losses")
+      update_counts(challenger, "#{challenger_weapon.name}_wins")
+      update_counts(challenged,  "#{challenged_weapon.name}_losses")
     end
 
     def update_challenged_wins
-      update_counts(challenger,"#{challenger_weapon.name}_losses")
-      update_counts(challenged, "#{challenged_weapon.name}_wins")
+      update_counts(challenger, "#{challenger_weapon.name}_losses")
+      update_counts(challenged,  "#{challenged_weapon.name}_wins")
     end
 
     def update_counts(participant, key)

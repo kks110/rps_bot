@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'base'
 require_relative '../helpers/stats_response_builder'
 
@@ -8,7 +10,7 @@ module Command
     end
 
     def description
-      "See a players all time stats, default is yourself if no username given"
+      'See a players all time stats, default is yourself if no username given'
     end
 
     def execute(request:)
@@ -17,11 +19,11 @@ module Command
       user_id = event.options['user']
       user_id = event.user.id if user_id.nil?
 
-      player = Player.find_by({discord_id: user_id.to_i})
+      player = Player.find_by({ discord_id: user_id.to_i })
 
       response = Helpers::StatsResponseBuilder.new(stats: player).build_player_response
 
-      event.respond(content: response, allowed_mentions: {"parse": []})
+      event.respond(content: response, allowed_mentions: { parse: [] })
     end
 
     def options
@@ -30,8 +32,8 @@ module Command
           type: 'user',
           name: 'user',
           description: 'The user you want the stats of. (Default is yourself)',
-          required: false,
-          )
+          required: false
+        )
       ]
     end
   end
