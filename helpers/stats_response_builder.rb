@@ -9,12 +9,12 @@ module Helpers
 
     def build_response
       "<@#{player.discord_id}>'s stats:\n" +
-        "`─────────────────────`\n" +
-        ":medal:`│   W │   D │   L `\n" +
-        ":rock:`│#{score_display(player.rock_wins)}│#{score_display(player.rock_draws)}│#{score_display(player.rock_losses)}`\n" +
-        ":scroll:`│#{score_display(player.paper_wins)}│#{score_display(player.paper_draws)}│#{score_display(player.paper_losses)}`\n" +
-        ":scissors:`│#{score_display(player.scissors_wins)}│#{score_display(player.scissors_draws)}│#{score_display(player.scissors_losses)}`\n" +
-        "`─────────────────────`"
+        "`───────────────────────────`\n" +
+        ":medal:`│   W │   D │   L │ WR% `\n" +
+        ":rock:`│#{score_display(player.rock_wins)}│#{score_display(player.rock_draws)}│#{score_display(player.rock_losses)}│#{score_display(player.rock_win_rate)}`\n" +
+        ":scroll:`│#{score_display(player.paper_wins)}│#{score_display(player.paper_draws)}│#{score_display(player.paper_losses)}│#{score_display(player.paper_win_rate)}`\n" +
+        ":scissors:`│#{score_display(player.scissors_wins)}│#{score_display(player.scissors_draws)}│#{score_display(player.scissors_losses)}│#{score_display(player.scissors_win_rate)}`\n" +
+        "`───────────────────────────`"
     end
 
     private
