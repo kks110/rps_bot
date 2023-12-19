@@ -41,11 +41,11 @@ module Command
       ).update_results
 
       if winner == :draw
-        event.respond(content: "You both picked #{challenged_weapon.name}. Its a draw!", ephemeral: true)
+        event.respond(content: "<@#{challenger_id}> and <@#{challenged_id}> both picked #{challenged_weapon.name}. Its a draw!", ephemeral: true)
       elsif winner == :challenger
-        event.respond(content: "You picked #{challenged_weapon.name}, <@#{challenger.discord_id}> picked #{challenger_weapon.name} They have won!")
+        event.respond(content: "<@#{challenged_id}> picked #{challenged_weapon.name}, <@#{challenger_id}> picked #{challenger_weapon.name}. <@#{challenger_id}> has won!")
       elsif winner == :challenged
-        event.respond(content: "You picked #{challenged_weapon.name}, <@#{challenger.discord_id}> picked #{challenger_weapon.name} You have won!")
+        event.respond(content: "<@#{challenged_id}> picked #{challenged_weapon.name}, <@#{challenger_id}> picked #{challenger_weapon.name}. <@#{challenged_id}> has won!")
       end
 
       challenge.destroy

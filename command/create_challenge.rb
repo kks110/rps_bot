@@ -28,7 +28,7 @@ module Command
       end
 
       if challenged.nil?
-        event.respond(content: "<@#{challenged_id}> has not registered to play", ephemeral: true)
+        event.respond(content: "<@#{challenged_id}> has not registered to play")
         return
       end
 
@@ -49,7 +49,7 @@ module Command
         weapon: weapon
       )
 
-      event.respond(content: 'Challenge created!', ephemeral: true)
+      event.respond(content: "<@#{challenger_id}> has challenged <@#{challenged_id}> to some Rock Paper Scissors")
     end
 
     def options

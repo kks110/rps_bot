@@ -6,6 +6,6 @@ module Command
       @event = event
     end
 
-    attr_reader :event, :game
+    attr_reader :event
   end
 end

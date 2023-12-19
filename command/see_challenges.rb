@@ -29,7 +29,7 @@ module Command
       return response if challenges.nil?
 
       challenges.each do |challenge|
-        response << "#{challenge.challenged.username}\n"
+        response << "<@#{challenge.challenged.discord_id}>\n"
       end
       response
     end
@@ -39,7 +39,7 @@ module Command
       return response if challenges.nil?
 
       challenges.each do |challenge|
-        response << "#{challenge.challenger.username}\n"
+        response << "<@#{challenge.challenger.discord_id}>\n"
       end
       response
     end

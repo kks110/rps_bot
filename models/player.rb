@@ -2,7 +2,7 @@
 
 class Player
   include Mongoid::Document
-  field :discord_id, type: BigDecimal, default: 0
+  field :discord_id, type: Integer
 
   field :username, type: String
 

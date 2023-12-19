@@ -8,7 +8,7 @@ module Helpers
     end
 
     def build_response
-      "#{player.username}'s stats:'\n" +
+      "<@#{player.discord_id}>'s stats:\n" +
         "`─────────────────────`\n" +
         ":medal:`│   W │   D │   L `\n" +
         ":rock:`│#{score_display(player.rock_wins)}│#{score_display(player.rock_draws)}│#{score_display(player.rock_losses)}`\n" +
