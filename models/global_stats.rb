@@ -43,7 +43,6 @@ class GlobalStats
     errors.add(:base, 'Only one document is allowed') if existing_count.positive?
   end
 
-
   def total_rock_games
     rock_wins + rock_losses + rock_draws
   end
