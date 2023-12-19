@@ -19,7 +19,7 @@ module Command
 
       player = Player.find_by({discord_id: user_id.to_i})
 
-      response = Helpers::StatsResponseBuilder.new(player: player).build_response
+      response = Helpers::StatsResponseBuilder.new(stats: player).build_player_response
 
       event.respond(content: response, allowed_mentions: {"parse": []})
     end

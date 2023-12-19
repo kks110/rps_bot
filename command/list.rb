@@ -6,6 +6,7 @@ require_relative 'create_challenge'
 require_relative 'accept_challenge'
 require_relative 'see_challenges'
 require_relative 'show_stats'
+require_relative 'show_global_stats'
 
 module Command
   LIST = [
@@ -14,6 +15,7 @@ module Command
     CreateChallenge.new,
     AcceptChallenge.new,
     SeeChallenges.new,
-    ShowStats.new
+    ShowStats.new,
+    ShowGlobalStats.new
   ].freeze
 end

@@ -15,17 +15,21 @@ class GlobalStats
 
   validate :ensure_single_document, on: :create
 
-  private
-
   def rock_win_rate
+    return 0 if total_rock_games == 0
+
     (((rock_wins + draw_wr_adjustment(rock_draws)) / total_rock_games) * 100).round
   end
 
   def paper_win_rate
+    return 0 if total_paper_games == 0
+
     (((paper_wins + draw_wr_adjustment(paper_draws)) / total_paper_games) * 100).round
   end
 
   def scissors_win_rate
+    return 0 if total_scissors_games == 0
+
     (((scissors_wins + draw_wr_adjustment(scissors_draws)) / total_scissors_games) * 100).round
   end
 
