@@ -11,3 +11,4 @@ prod:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  database: rps_bot
