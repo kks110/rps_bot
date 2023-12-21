@@ -5,6 +5,7 @@ class WeaponTypesInitializer
 
   class << self
     def initialize_weapon_types
+      puts 'Creating weapon types...'
       WEAPON_TYPES.each do |type|
         create_transaction_type(type) unless transaction_type_exists?(type)
       end
@@ -19,6 +20,7 @@ class WeaponTypesInitializer
     def transaction_type_exists?(type)
       return false if WeaponType.find_by({ name: type }).nil?
 
+      puts "Creating #{type}..."
       true
     end
   end

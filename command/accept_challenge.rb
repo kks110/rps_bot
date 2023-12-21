@@ -19,19 +19,19 @@ module Command
       challenged_id = event.user.id
       challenger_id = event.options['user'].to_i
 
-      challenged_weapon = WeaponType.find_by({ name: event.options['weapon'] })
-      challenger = Player.find_by({ discord_id: challenger_id })
-      challenged = Player.find_by({ discord_id: challenged_id })
+      challenged_weapon = WeaponType.find_by(name: event.options['weapon'])
+      challenger = Player.find_by(discord_id: challenger_id)
+      challenged = Player.find_by(discord_id: challenged_id)
 
-      challenge =  Challenge.find_by({ challenger: challenger, challenged: challenged }) ||
-        Challenge.find_by({ challenger: challenged, challenged: challenger })
+      challenge =  Challenge.find_by(challenger: challenger, challenged: challenged) ||
+        Challenge.find_by(challenger: challenged, challenged: challenger)
 
       if challenge.nil?
         event.respond(content: 'No challenge between you exists', ephemeral: true)
         return
       end
 
-      challenger_weapon = challenge.weapon
+      challenger_weapon = challenge.weapon_type
 
       winner = Helpers::GameResultsUpdater.new(
         challenger: challenger,

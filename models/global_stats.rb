@@ -1,19 +1,9 @@
 # frozen_string_literal: true
 
-class GlobalStats
-  include Mongoid::Document
+require 'active_record'
 
-  field :rock_wins, type: Integer, default: 0
-  field :rock_losses, type: Integer, default: 0
-  field :rock_draws, type: Integer, default: 0
-  field :paper_wins, type: Integer, default: 0
-  field :paper_losses, type: Integer, default: 0
-  field :paper_draws, type: Integer, default: 0
-  field :scissors_wins, type: Integer, default: 0
-  field :scissors_losses, type: Integer, default: 0
-  field :scissors_draws, type: Integer, default: 0
-
-  validate :ensure_single_document, on: :create
+class GlobalStats < ActiveRecord::Base
+  validate :there_can_only_be_one, on: :create
 
   def rock_win_rate
     return 0 if total_rock_games.zero?
@@ -35,12 +25,8 @@ class GlobalStats
 
   private
 
-  def ensure_single_document
-    # Check the number of existing documents in the collection
-    existing_count = GlobalStats.count
-
-    # Add an error if there is already a document in the collection
-    errors.add(:base, 'Only one document is allowed') if existing_count.positive?
+  def there_can_only_be_one
+    errors.add_to_base('There can only be one') if GlobalStats.count > 0
   end
 
   def total_rock_games

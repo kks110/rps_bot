@@ -46,8 +46,8 @@ module Helpers
     end
 
     def update_counts(participant, key)
-      participant.update({ key.to_sym => participant.send(key) + 1 })
-      global_stats.update({ key.to_sym => global_stats.send(key) + 1 })
+      participant.update!({ key.to_sym => participant.send(key) + 1 })
+      global_stats.update!({ key.to_sym => global_stats.send(key) + 1 })
     end
   end
 end

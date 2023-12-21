@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-class Challenge
-  include Mongoid::Document
+require 'active_record'
 
-  belongs_to :challenger, class_name: 'Player'
-  belongs_to :challenged, class_name: 'Player'
-  belongs_to :weapon, class_name: 'WeaponType'
+class Challenge < ActiveRecord::Base
 
-  validates :challenger, :challenged, :weapon, presence: true
+  belongs_to :challenger, class_name: 'Player', foreign_key: 'challenger_id'
+  belongs_to :challenged, class_name: 'Player', foreign_key: 'challenged_id'
+  belongs_to :weapon_type, class_name: 'WeaponType', foreign_key: 'weapon_type_id'
+
+  validates :challenger, :challenged, :weapon_type, presence: true
 end

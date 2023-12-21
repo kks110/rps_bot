@@ -1,22 +1,9 @@
 # frozen_string_literal: true
 
-class Player
-  include Mongoid::Document
-  field :discord_id, type: Integer
+require 'active_record'
 
-  field :username, type: String
-
-  field :rock_wins, type: Integer, default: 0
-  field :rock_losses, type: Integer, default: 0
-  field :rock_draws, type: Integer, default: 0
-  field :paper_wins, type: Integer, default: 0
-  field :paper_losses, type: Integer, default: 0
-  field :paper_draws, type: Integer, default: 0
-  field :scissors_wins, type: Integer, default: 0
-  field :scissors_losses, type: Integer, default: 0
-  field :scissors_draws, type: Integer, default: 0
-
-  validates :discord_id, :username, presence: true
+class Player < ActiveRecord::Base
+  validates :discord_id, :username, presence: true, uniqueness: true
 
   def rock_win_rate
     return 0 if total_rock_games.zero?

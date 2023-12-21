@@ -1,0 +1,13 @@
+
+dev:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: rps_bot
+  username: rps_user
+  password: rps_user
+
+prod:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

@@ -19,7 +19,7 @@ module Command
       user_id = event.options['user']
       user_id = event.user.id if user_id.nil?
 
-      player = Player.find_by({ discord_id: user_id.to_i })
+      player = Player.find_by(discord_id: user_id.to_i)
 
       response = Helpers::StatsResponseBuilder.new(stats: player).build_player_response
 

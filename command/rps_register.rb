@@ -16,7 +16,7 @@ module Command
       event = request.event
       user = event.user
 
-      if Player.find_by({ discord_id: user.id })
+      if Player.find_by(discord_id: user.id)
         event.respond(content: 'You have already registered!', ephemeral: true)
         return
       end

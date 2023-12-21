@@ -18,9 +18,9 @@ module Command
       challenger_id = event.user.id
       challenged_id = event.options['user'].to_i
 
-      weapon = WeaponType.find_by({ name: event.options['weapon'] })
-      challenger = Player.find_by({ discord_id: challenger_id })
-      challenged = Player.find_by({ discord_id: challenged_id })
+      weapon = WeaponType.find_by(name: event.options['weapon'])
+      challenger = Player.find_by(discord_id: challenger_id)
+      challenged = Player.find_by(discord_id: challenged_id)
 
       if challenger.nil?
         event.respond(content: "You have not registered so you can't challenge someone", ephemeral: true)
@@ -37,8 +37,8 @@ module Command
         return
       end
 
-      if Challenge.find_by({ challenger: challenger, challenged: challenged }) ||
-        Challenge.find_by({ challenger: challenged, challenged: challenger })
+      if Challenge.find_by(challenger: challenger, challenged: challenged) ||
+        Challenge.find_by(challenger: challenged, challenged: challenger)
         event.respond(content: 'A challenge already exists!', ephemeral: true)
         return
       end
@@ -46,7 +46,7 @@ module Command
       Challenge.create!(
         challenger: challenger,
         challenged: challenged,
-        weapon: weapon
+        weapon_type: weapon
       )
 
       event.respond(content: "<@#{challenger_id}> has challenged <@#{challenged_id}> to some Rock Paper Scissors")
