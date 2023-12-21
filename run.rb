@@ -3,7 +3,11 @@
 require 'discordrb'
 require 'pry'
 require_relative 'init'
-Dir['./models/*.rb'].sort.each { |file| require file }
+
+require_relative 'models/global_stats'
+require_relative 'models/player'
+require_relative 'models/weapon_type'
+require_relative 'models/challenge'
 
 require_relative 'command/list'
 require_relative 'command/register_commands'
