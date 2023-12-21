@@ -49,7 +49,9 @@ module Command
         weapon_type: weapon
       )
 
-      event.respond(content: "<@#{challenger_id}> has challenged <@#{challenged_id}> to some Rock Paper Scissors")
+      event.respond(content: "Challenge created", ephemeral: true)
+      event.channel.send_message "<@#{challenger_id}> has challenged <@#{challenged_id}> to some Rock Paper Scissors"
+      event.delete_response
     end
 
     def options
